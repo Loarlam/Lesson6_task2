@@ -23,33 +23,34 @@ namespace Task2
 
     class Book
     {
-        public void FindNext(string str)
-        {
-            Console.WriteLine("Поиск строки:");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{str}\n");
-            Console.ResetColor();
-        }
-    }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            const string quote = "Я как-то слышал анекдот. " +
+        const string QUOTE = "Я как-то слышал анекдот. " +
                 "Мужчина приходит к врачу, жалуется на депрессию, говорит, жизнь груба и жестока, что он чувствует себя одиноким в угрожающем мире. " +
                 "Врач предлагает простой рецепт — великий клоун Пальячи сегодня в городе, сходите, это вас подбодрит. " +
                 "Мужчина взрывается слезами. «Но доктор, — говорит он, — я и есть Пальячи».";
 
+        public void FindNext(string str)
+        {
             Console.WriteLine("Исходный текст:");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine($"{quote}\n");
+            Console.WriteLine($"{QUOTE}\n");
             Console.ResetColor();
 
-            Book book = new Book();
-            book.FindNext("Мужчина приходит к врачу, жалуется на депрессию,");
+            Console.WriteLine("Поиск строки:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{str}\n");
+            Console.ResetColor();
 
-            FindAndReplaceManager.SetText = quote;
-            FindAndReplaceManager.FindNext("предлагает простой");
+            FindAndReplaceManager.SetText = QUOTE;
+            FindAndReplaceManager.FindNext(str);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book book = new Book();
+            book.FindNext("Мужчина приходит к врачу, жалуется на депрессию");
 
             Console.ReadKey();
         }
